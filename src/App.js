@@ -3,8 +3,6 @@ import WebViewer from '@pdftron/webviewer';
 import { initializeAudioViewer } from '@pdftron/webviewer-audio';
 import './App.css';
 
-const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
 const DOCUMENT_ID = 'audio';
 
 const App = () => {
@@ -27,8 +25,7 @@ const App = () => {
       const { setHeaderItems, annotManager } = instance;
 
       instance.setTheme('dark');
-      // safari check due to a bug in webviewer
-      !isSafari && instance.openElements('notesPanel');
+      instance.openElements(['notesPanel']);
 
       const license = `---- Insert commercial license key here after purchase ----`;
       // Extends WebViewer to allow loading media files (.mp3, .mp4, ogg, webm, etc.)
