@@ -67,6 +67,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "clean": "rm -rf node_modules/ package-lock.json",
     "start-demo": "DEMO=true node scripts/start.js",
     "deploy-demo": "npm run build-demo && firebase deploy",
     "build": "GENERATE_SOURCEMAP=false node scripts/build.js",
