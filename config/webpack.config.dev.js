@@ -92,9 +92,12 @@ module.exports = {
     // Note: instead of the default WebpackDevServer client, we use a custom one
     // to bring better experience for Create React App users. You can replace
     // the line below with these two lines if you prefer the stock client:
-    // require.resolve('webpack-dev-server/client') + '?/',
-    // require.resolve('webpack/hot/dev-server'),
-    require.resolve('react-dev-utils/webpackHotDevClient'),
+
+    // ADDED by KRISTIAN: Using the default hot reloading because
+    // the other one causes the audio package to throw a runtime error (SharedBufferArray)
+    require.resolve('webpack-dev-server/client') + '?/',
+    require.resolve('webpack/hot/dev-server'),
+    // require.resolve('react-dev-utils/webpackHotDevClient'),
     // Finally, this is your app's code:
     paths.appIndexJs,
     // We include the app code last so that if there is a runtime error during
@@ -189,7 +192,7 @@ module.exports = {
             options: {
               formatter: require.resolve('react-dev-utils/eslintFormatter'),
               eslintPath: require.resolve('eslint'),
-
+              emitWarning: true,
             },
             loader: require.resolve('eslint-loader'),
           },
