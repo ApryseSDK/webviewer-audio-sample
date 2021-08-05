@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "@babel/core": "7.1.0",
-    "@pdftron/webviewer": "^7.2.0",
-    "@pdftron/webviewer-audio": "^2.0.0",
+    "@pdftron/webviewer": "8.0.0",
+    "@pdftron/webviewer-audio": "^2.2.0",
     "@svgr/webpack": "2.4.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
