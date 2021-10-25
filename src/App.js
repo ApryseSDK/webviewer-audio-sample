@@ -1,22 +1,18 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import WebViewer from '@pdftron/webviewer';
 import { initializeAudioViewer } from '@pdftron/webviewer-audio';
 import './App.css';
 
 const App = () => {
   const viewer = useRef(null);
-  const [ internetExplorerCheck, setInternetExplorerCheck ] = useState(false);
 
   // if using a class, equivalent of componentDidMount
   useEffect(() => {
-    if (window.document.documentMode) {
-      setInternetExplorerCheck(true);
-      return;
-    }
-
     WebViewer(
       {
         path: '/webviewer/lib',
+        // Fix for ie11. It can't switch to dark mode so we do it manually.
+        ...(window.document.documentMode && { css: '../../../styles.css' }),
       },
       viewer.current,
     ).then(async instance => {
@@ -39,14 +35,6 @@ const App = () => {
       loadAudio(audioUrl);
     });
   }, []);
-
-  if (internetExplorerCheck) {
-    return (
-      <div>
-        WebViewer Audio does not support Internet Explorer.
-      </div>
-    );
-  }
 
   return (
     <div className="App">
