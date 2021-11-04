@@ -11,8 +11,6 @@ const App = () => {
     WebViewer(
       {
         path: '/webviewer/lib',
-        // Fix for ie11. It can't switch to dark mode so we do it manually.
-        ...(window.document.documentMode && { css: '../../../styles.css' }),
       },
       viewer.current,
     ).then(async instance => {
