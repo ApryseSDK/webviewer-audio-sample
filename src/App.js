@@ -29,7 +29,7 @@ const App = () => {
       // Load a media element at a specific url. Can be a local or public link
       // If local it needs to be relative to lib/ui/index.html.
       // Or at the root. (eg '/audio.mp3')
-      const audioUrl = '/audio.mp3';
+      const audioUrl = 'https://pdftron.s3.amazonaws.com/downloads/pl/video/audio.mp3';
       loadAudio(audioUrl);
     });
   }, []);
