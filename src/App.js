@@ -23,7 +23,7 @@ const App = () => {
         loadAudio,
       } = await initializeAudioViewer(
         instance,
-        { license },
+        { license, isDemoMode: process.env.DEMO },
       );
 
       // Load a media element at a specific url. Can be a local or public link
