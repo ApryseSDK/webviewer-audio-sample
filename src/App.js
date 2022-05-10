@@ -38,8 +38,13 @@ const App = () => {
       // If local it needs to be relative to lib/ui/index.html.
       // Or at the root. (eg '/audio.mp3')
       const audioUrl = 'https://pdftron.s3.amazonaws.com/downloads/pl/video/audio.mp3';
-      audioInstance.loadAudio(audioUrl);
-      initializeHeader(instance);
+
+      fetch(audioUrl)
+        .then(response => response.blob())
+        .then(responseBlob => {
+          audioInstance.loadAudio(URL.createObjectURL(responseBlob), { fileName: 'test.mp3' });
+          initializeHeader(instance);
+        });
     });
   }, []);
 
