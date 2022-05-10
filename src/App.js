@@ -41,7 +41,7 @@ const App = () => {
       audioInstance.loadAudio(audioUrl);
       initializeHeader(instance);
     });
-  }, []);
+  }, [initializeHeader]);
 
   const initializeHeader = useCallback(instance => {
     const { setHeaderItems } = instance;
