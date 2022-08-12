@@ -19,6 +19,8 @@ const App = () => {
     WebViewer(
       {
         path: '/webviewer/lib',
+        enableRedaction: process.env.DEMO,
+        disableVirtualDisplayMode: true,
       },
       viewer.current,
     ).then(async instance => {
