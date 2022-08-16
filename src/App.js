@@ -20,7 +20,6 @@ const App = () => {
       {
         path: '/webviewer/lib',
         enableRedaction: process.env.DEMO,
-        disableVirtualDisplayMode: true,
       },
       viewer.current,
     ).then(async instance => {
@@ -31,7 +30,11 @@ const App = () => {
       // Extends WebViewer to allow loading media files (.mp3, .mp4, ogg, webm, etc.)
       const audioInstance = await initializeAudioViewer(
         instance,
-        { license, isDemoMode: process.env.DEMO },
+        {
+          license,
+          enableRedaction: process.env.DEMO,
+          isDemoMode: process.env.DEMO
+        },
       );
 
       setAudioInstance(audioInstance);
