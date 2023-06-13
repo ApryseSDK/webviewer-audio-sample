@@ -22,8 +22,8 @@ const App = () => {
       },
       viewer.current,
     ).then(async instance => {
-      instance.setTheme('dark');
-      instance.openElements(['notesPanel']);
+      instance.UI.setTheme('dark');
+      instance.UI.openElements(['notesPanel']);
 
       const license = `---- Insert commercial license key here after purchase ----`;
       // Extends WebViewer to allow loading media files (.mp3, .mp4, ogg, webm, etc.)
@@ -44,7 +44,7 @@ const App = () => {
   }, [initializeHeader]);
 
   const initializeHeader = useCallback(instance => {
-    const { setHeaderItems } = instance;
+    const { UI: { setHeaderItems } } = instance;
 
     setHeaderItems(header => {
       // Add upload file button
