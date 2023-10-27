@@ -38,6 +38,7 @@ const App = () => {
       // If local it needs to be relative to lib/ui/index.html.
       // Or at the root. (eg '/audio.mp3')
       const audioUrl = 'https://pdftron.s3.amazonaws.com/downloads/pl/video/audio.mp3';
+
       audioInstance.loadAudio(audioUrl);
       initializeHeader(instance);
     });
@@ -69,8 +70,7 @@ const App = () => {
 
     // There won't be file if the file dialog is canceled
     if (file) {
-      const newObjectUrl = URL.createObjectURL(file);
-      audioInstance.loadAudio(newObjectUrl, { fileName: file.name });
+      audioInstance.loadAudio(file, { fileName: file.name });
     }
   };
 
