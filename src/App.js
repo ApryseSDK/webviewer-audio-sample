@@ -14,6 +14,26 @@ const App = () => {
 
   const [audioInstance, setAudioInstance] = useState(null);
 
+  const initializeHeader = useCallback(instance => {
+    const { UI: { setHeaderItems } } = instance;
+
+    setHeaderItems(header => {
+      // Add upload file button
+      header.push({
+        type: 'actionButton',
+        img: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 15H13V9H16L12 4L8 9H11V15Z" fill="currentColor"/>
+          <path d="M20 18H4V11H2V18C2 19.103 2.897 20 4 20H20C21.103 20 22 19.103 22 18V11H20V18Z" fill="currentColor"/>
+          </svg>`,
+        title: 'Load file',
+        dataElement: 'audio-loadFileButton',
+        onClick: () => {
+          inputFile.current.click();
+        }
+      });
+    });
+  }, []);
+
   // if using a class, equivalent of componentDidMount
   useEffect(() => {
     WebViewer(
@@ -43,27 +63,6 @@ const App = () => {
       initializeHeader(instance);
     });
   }, [initializeHeader]);
-
-  const initializeHeader = useCallback(instance => {
-    const { UI: { setHeaderItems } } = instance;
-
-    setHeaderItems(header => {
-      // Add upload file button
-      header.push({
-        type: 'actionButton',
-        img: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11 15H13V9H16L12 4L8 9H11V15Z" fill="currentColor"/>
-        <path d="M20 18H4V11H2V18C2 19.103 2.897 20 4 20H20C21.103 20 22 19.103 22 18V11H20V18Z" fill="currentColor"/>
-        </svg>`,
-        title: 'Load file',
-        dataElement: 'audio-loadFileButton',
-        onClick: () => {
-          inputFile.current.click();
-        }
-      });
-    });
-  // eslint-disable-next-line
-  }, []);
 
   const onFileChange = async event => {
     const file = event.target.files[0];
