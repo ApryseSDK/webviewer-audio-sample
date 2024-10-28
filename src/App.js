@@ -36,7 +36,7 @@ const App = () => {
 
   // if using a class, equivalent of componentDidMount
   useEffect(() => {
-    WebViewer(
+    WebViewer.Iframe(
       {
         path: '/webviewer/lib',
       },
